@@ -168,16 +168,19 @@ continueBtn.addEventListener("click", () => {
   });
 
 });
-// PARALLAX SUAVE
+// SCROLL — PARALLAX + CINEMATOGRÁFICO
 
 window.addEventListener("scroll", () => {
 
-  const scrolled = window.scrollY;
+  const scrollY = window.scrollY;
 
-  gsap.to(".chapter-image img",{
-    y: scrolled * 0.08,
-    duration:1,
-    ease:"power1.out"
+  document.querySelectorAll(".chapter img").forEach((image) => {
+    gsap.to(image, {
+      y: scrollY * 0.05,
+      scale: 1.05,
+      duration: 1.2,
+      ease: "power1.out"
+    });
   });
 
 });
@@ -214,28 +217,6 @@ const observer = new IntersectionObserver((entries) => {
 
 hiddenSections.forEach(section => {
   observer.observe(section);
-});
-// EFECTO CINEMATOGRAFICO EN SCROLL
-
-const chapters = document.querySelectorAll(".chapter");
-
-window.addEventListener("scroll", () => {
-
-  const scrollY = window.scrollY;
-
-  chapters.forEach((chapter,index) => {
-
-    const image = chapter.querySelector("img");
-
-    gsap.to(image,{
-      y: scrollY * 0.03,
-      scale:1.05,
-      duration:1.2,
-      ease:"power1.out"
-    });
-
-  });
-
 });
 
 
