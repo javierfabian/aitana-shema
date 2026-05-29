@@ -411,136 +411,102 @@ h1{
 /* CHAPTER */
 
 .chapter{
-
   width:100%;
   min-height:100vh;
-
-  display:flex;
-  flex-direction:column;
-
-  justify-content:center;
-  align-items:center;
-
-  padding:30px;
-
-  background:
-  linear-gradient(
-    to bottom,
-    #fffaf5,
-    #f8c8dc
-  );
-
   position:relative;
-  opacity:1;
-
-  transition:
-  opacity 1.2s ease,
-  transform 1.2s ease;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  padding:16px 24px 60px;
+  overflow:hidden;
 }
 
 .chapter-image{
-
+  position:absolute;
+  inset:0;
   width:100%;
-  max-width:400px;
-
-  margin-bottom:40px;
+  height:100%;
+  z-index:1;
 }
 
 .chapter-image img{
-
   width:100%;
-
-  border-radius:30px;
-
+  height:100%;
   object-fit:cover;
-
-  box-shadow:
-  0 20px 50px rgba(0,0,0,.15);
+  object-position:center top;
   transform:scale(1.05);
-
   transition:transform .6s ease;
 }
 
-.chapter-text{
+.chapter::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.04) 0%,
+    rgba(0,0,0,0.18) 55%,
+    rgba(0,0,0,0.35) 100%
+  );
+  z-index:2;
+  pointer-events:none;
+}
 
+.chapter-text{
+  position:relative;
+  z-index:10;
+  width:min(520px, calc(100% - 32px));
   text-align:center;
-  width: min(520px, 100%);
-  max-width:520px;
-  padding: 16px 16px;
-  border-radius: 14px;
-  background: rgba(255, 250, 245, 0.52);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding:16px 18px 20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.12),
+    0 2px 8px rgba(255,255,255,0.08) inset;
+  margin:0 auto;
 }
 
 .chapter-text span{
-
-  color:#c8a2ff;
-
+  color:rgba(255,255,255,0.7);
   letter-spacing:4px;
-
   text-transform:uppercase;
-
   font-size:.8rem;
 }
 
 .chapter-text h2{
-
   font-family:'Cormorant Garamond', serif;
-
-  font-size:4rem;
-
-  color:#7c4dff;
-
-  margin:20px 0;
-  text-shadow:
-  0 10px 30px rgba(124,77,255,.15);
+  font-size:3.2rem;
+  color:#fff;
+  margin:8px 0;
+  text-shadow:0 2px 12px rgba(0,0,0,0.25);
 }
 
 .chapter-text p{
-
-  font-size:1.1rem;
-
-  line-height:2;
-
-  color:#5a4f63;
+  font-size:1rem;
+  line-height:1.85;
+  color:rgba(255,255,255,0.90);
   font-weight:400;
-
-  text-shadow: none;
-  letter-spacing: 0.3px;
+  text-shadow:0 1px 6px rgba(0,0,0,0.2);
+  letter-spacing:0.2px;
 }
-
-/* MOBILE */
 
 @media(max-width:768px){
-
+  .chapter{
+    padding:16px 16px 48px;
+  }
   .chapter-text{
-    padding: 12px 12px;
-    border-radius: 12px;
-    max-width: calc(100% - 24px);
+    padding:14px 14px 18px;
   }
-
   .chapter-text h2{
-    font-size:3rem;
+    font-size:2.4rem;
   }
-
   .chapter-text p{
-    font-size: 1rem;
-    line-height: 1.9;
+    font-size:0.95rem;
+    line-height:1.8;
   }
-
-}
-/* CAPITULOS ALTERNADOS */
-
-.chapter-alt{
-
-  background:
-  linear-gradient(
-    to bottom,
-    #f5e8ff,
-    #fffaf5
-  );
 }
 
 /* CAPITULO FINAL - CIERRE EMOTIVO */
