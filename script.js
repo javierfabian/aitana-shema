@@ -77,36 +77,48 @@ tsParticles.load("tsparticles", {
 // BOTON ENTRAR
 
 const enterBtn = document.querySelector(".enter-btn");
-
 const hero = document.querySelector(".hero");
-
 const introMessage = document.querySelector(".intro-message");
-enterBtn.addEventListener("click", () => {
-  // introAudio removed — proceed with visual transition
+const backgroundMusic = document.getElementById("backgroundMusic");
+let backgroundMusicStarted = false;
 
-  // DESTELLO
+enterBtn.addEventListener("click", () => {
+
+  if(!backgroundMusicStarted){
+    backgroundMusic.volume = 0;
+    backgroundMusic.play().catch(() => {});
+    backgroundMusicStarted = true;
+    gsap.to(backgroundMusic,{
+      volume:0.12,
+      duration:3,
+      ease:"power1.inOut"
+    });
+  }
+
   gsap.to(".hero-content",{
     opacity:0,
     scale:1.1,
     duration:1
- });
+  });
 
   gsap.to(".hero",{
     opacity:0,
     duration:1.5,
     delay:0.5,
-
     onComplete:() => {
 
       hero.style.display = "none";
-
       introMessage.classList.remove("hidden");
 
-      gsap.from(".intro-content",{
-        opacity:0,
-        y:50,
-        duration:1.5
-      });
+      gsap.fromTo(".intro-message",
+        { scale:1.08, opacity:0 },
+        { scale:1, opacity:1, duration:2, ease:"power2.out" }
+      );
+
+      gsap.fromTo(".intro-content",
+        { opacity:0, y:60 },
+        { opacity:1, y:0, duration:1.6, delay:0.6, ease:"power3.out" }
+      );
 
     }
   });
@@ -115,50 +127,44 @@ enterBtn.addEventListener("click", () => {
 // CONTINUAR HISTORIA
 
 const continueBtn = document.querySelector(".continue-btn");
-
 const chapter = document.querySelector(".chapter");
 
 continueBtn.addEventListener("click", () => {
-    
- // no intro audio to fade — proceed with hiding intro content
+
   gsap.to(".intro-content",{
     opacity:0,
-    y:-50,
-    duration:1
+    y:-40,
+    duration:0.8,
+    ease:"power2.in"
   });
 
   gsap.to(".intro-message",{
-
     opacity:0,
-    duration:1.5,
-
+    scale:1.06,
+    duration:1.4,
     delay:0.5,
-
+    ease:"power2.in",
     onComplete:() => {
 
       document.querySelector(".intro-message").style.display = "none";
 
       chapter.classList.remove("hidden");
-
       chapter.style.visibility = "visible";
-
       chapter.style.pointerEvents = "auto";
 
-      gsap.from(".chapter-image",{
-        opacity:0,
-        scale:0.8,
-        duration:1.5
-      });
+      // Foto entra con zoom suave desde abajo
+      gsap.fromTo(".chapter-image",
+        { opacity:0, scale:1.08, y:30 },
+        { opacity:1, scale:1, y:0, duration:1.8, ease:"power3.out" }
+      );
 
-      gsap.from(".chapter-text",{
-        opacity:0,
-        y:50,
-        duration:1.5,
-        delay:0.4
-      });
+      // Texto sube con delay
+      gsap.fromTo(".chapter-text",
+        { opacity:0, y:50 },
+        { opacity:1, y:0, duration:1.5, delay:0.5, ease:"power3.out" }
+      );
 
     }
-
   });
 
 });
@@ -232,22 +238,4 @@ window.addEventListener("scroll", () => {
 
 });
 
-// MUSICA DE FONDO CINEMATOGRAFICA
 
-const backgroundMusic = document.getElementById("backgroundMusic");
-let backgroundMusicStarted = false;
-
-enterBtn.addEventListener("click", () => {
-  if (!backgroundMusicStarted) {
-    backgroundMusic.volume = 0;
-    backgroundMusic.play().catch(() => {});
-    backgroundMusicStarted = true;
-    
-    // Fade in cinematográfico suave
-    gsap.to(backgroundMusic, {
-      volume: 0.12,
-      duration: 3,
-      ease: "power1.inOut"
-    });
-  }
-});

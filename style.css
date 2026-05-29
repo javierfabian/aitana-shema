@@ -310,98 +310,103 @@ h1{
 }
 
 .intro-message{
-
   width:100%;
   min-height:100vh;
-
   position:relative;
-
   display:flex;
   justify-content:center;
   align-items:flex-end;
+  padding:16px 24px 60px;
+  background-image:url('assets/img/01-llegaste/bebe1.jpeg');
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
 
-  padding:16px 24px 90px;
-
-  background:
-  radial-gradient(circle at center,
-  #fffaf5 0%,
-  #f8c8dc 100%);
+.intro-message::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0.18) 60%,
+    rgba(0,0,0,0.32) 100%
+  );
+  z-index:1;
+  pointer-events:none;
 }
 
 .intro-content{
-
-  width: min(500px, calc(100% - 32px));
-
-  text-align:center;
-
+  position:relative;
   z-index:2;
-  
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.05);
-  margin: 0 auto 12px;
-  margin-top: auto;
+  width:min(460px, calc(100% - 32px));
+  text-align:center;
+  padding:18px 20px 22px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.12),
+    0 2px 8px rgba(255,255,255,0.08) inset;
+  margin:0 auto;
 }
 
 .intro-content h2{
-
   font-family:'Cormorant Garamond', serif;
-
-  font-size:3rem;
-
-  color:#7c4dff;
-
-  margin-bottom:20px;
+  font-size:2.6rem;
+  color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,0.25);
+  margin-bottom:14px;
 }
 
 .intro-content p{
-
-  font-size:1.2rem;
-
+  font-size:1rem;
   line-height:1.85;
-
-  color:#5a4f63;
-
-  margin-bottom:24px;
-  
-  letter-spacing: 0.2px;
-  font-weight: 400;
+  color:rgba(255,255,255,0.92);
+  margin-bottom:22px;
+  font-weight:400;
+  letter-spacing:0.2px;
+  text-shadow:0 1px 6px rgba(0,0,0,0.2);
 }
 
 .continue-btn{
-
   border:none;
-
-  padding:16px 34px;
-
+  padding:14px 32px;
   border-radius:50px;
-
-  background:linear-gradient(
-    135deg,
-    #c8a2ff,
-    #f8c8dc
-  );
-
+  background:linear-gradient(135deg,#c8a2ff,#f8c8dc);
   color:white;
-
   font-size:1rem;
-
+  font-family:'Poppins', sans-serif;
+  font-weight:500;
   cursor:pointer;
-
-  box-shadow:0 10px 30px rgba(200,162,255,.35);
-
-  transition:.4s;
+  box-shadow:0 10px 30px rgba(200,162,255,0.4);
+  transition:0.4s;
 }
 
 .continue-btn:hover{
-  transform:translateY(-5px);
+  transform:translateY(-4px);
+  box-shadow:0 14px 36px rgba(200,162,255,0.55);
 }
-.enter-btn{
-  z-index:9999 !important;
+
+@media(max-width:768px){
+  .intro-message{
+    padding:16px 16px 48px;
+    background-position:center 20%;
+  }
+  .intro-content{
+    padding:16px 16px 20px;
+  }
+  .intro-content h2{
+    font-size:2rem;
+  }
+  .intro-content p{
+    font-size:0.95rem;
+    line-height:1.8;
+  }
 }
 /* CHAPTER */
 
