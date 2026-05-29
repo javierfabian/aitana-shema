@@ -1,3 +1,32 @@
+// LOADER
+
+const loader = document.getElementById("loader");
+const loaderProgress = document.getElementById("loaderProgress");
+
+let progress = 0;
+
+const interval = setInterval(() => {
+  progress += Math.random() * 18;
+  if(progress >= 100){
+    progress = 100;
+    loaderProgress.style.width = "100%";
+    clearInterval(interval);
+    setTimeout(() => {
+      loader.classList.add("hidden");
+    }, 600);
+  }
+  loaderProgress.style.width = progress + "%";
+}, 200);
+
+window.addEventListener("load", () => {
+  progress = 100;
+  loaderProgress.style.width = "100%";
+  clearInterval(interval);
+  setTimeout(() => {
+    loader.classList.add("hidden");
+  }, 600);
+});
+
 // ANIMACION INICIAL
 
 gsap.from(".logo",{
