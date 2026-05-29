@@ -32,9 +32,9 @@ gsap.from(".enter-btn",{
 
 tsParticles.load("tsparticles", {
   particles: {
-    number: {
-      value: 40
-    },
+      number: {
+        value: window.innerWidth < 768 ? 20 : 40
+      },
 
     color: {
       value: [
