@@ -638,3 +638,19 @@ html{
   border-radius:10px;
   transition:width 0.3s ease;
 }
+/* FIX FOTOS VISIBLES */
+
+.chapter.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.chapter.hidden .chapter-image,
+.chapter.hidden .chapter-image img {
+  opacity: 0;
+}
+
+.chapter .chapter-image img {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}

@@ -229,11 +229,12 @@ const observer = new IntersectionObserver((entries) => {
 
       entry.target.style.pointerEvents = "auto";
 
-      gsap.from(entry.target,{
-        opacity:0,
-        y:80,
-        duration:1.5,
-        ease:"power3.out"
+      gsap.from(entry.target, {
+        opacity: 0,
+        y: 80,
+        uration: 1.5,
+        ease: "power3.out",
+        clearProps: "all"
       });
 
     }
